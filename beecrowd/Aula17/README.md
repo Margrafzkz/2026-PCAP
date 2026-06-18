@@ -26,6 +26,9 @@ Uma sub-rotina decide quem venceu e o programa soma os pontos das 5 rodadas.
 Conceito pretendido: B
 ​
 Justificativa (cite arquivo e linha de cada critério):
-- O jogo funciona esta tudo bem certinho, n coloquei algo a mais, apenas algumas modifcações, como quando o jogador ganha, mostra qual a jogada dela, alem de modificações nos texto q são citados para o jogador e tudo organizado e bem feito.
-​
+- O jogo funciona ............: ppt.py, linhas 8 a 48
+- Trabalho com texto .........: ppt.py, linha 30  (.lower().strip() )
+- Documentação e Git .........: README.md criado, e commits no Github
+- Extensão/originalidade .....: ppt.py, linha 43, criei que toda vez q a maquina ganha mostra tambem qual foi a jogada dela.
+
 Autor: Margraf
