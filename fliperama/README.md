@@ -20,7 +20,7 @@ telas.py - ferramentas visuais
 modulos.py - ferramentas de lógica: as três funções que perguntam e conferem
 placar.py - quantas partidas cada jogo teve
 jogadores.py - quem são os jogadores
-adivinhe.py, ppt.py, parimpar.py e toupeira.py - um arquivo por jogo
+adivinhe.py, ppt.py, parimpar.py e meujogo.py - um arquivo por jogo
 placar.csv e jogadores.csv - os dados, que nascem sozinhos
 
 ## De onde ele veio
