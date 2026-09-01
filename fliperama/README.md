@@ -4,7 +4,7 @@ Um fliperama de terminal com quatro jogos, placar que não esquece e cadastro de
 
 ## O que ele faz
 
-Quatro jogos pelo menu: Adivinhe o Número, Pedra-Papel-Tesoura, Par ou Ímpar e Caça a toupeira
+Quatro jogos pelo menu: Adivinhe o Número, Pedra-Papel-Tesoura, Par ou Ímpar e Mina Terrestre
 Placar que conta quantas vezes cada jogo foi jogado e continua contando depois de fechar o programa
 Cadastro de jogadores: cadastrar, listar, alterar e excluir
 
