@@ -15,7 +15,7 @@ from modulos import ler_opcao
 from placar import salvar_placar, carregar_placar
 from jogadores import menu_jogadores, salvar_jogadores, carregar_jogadores, buscar
 from par_impar2 import jogar_par_ou_impar
-from mina import jogar_mina
+from meujogo import jogar_mina
 
 def mostrar_placar():
     titulo("PLACAR")

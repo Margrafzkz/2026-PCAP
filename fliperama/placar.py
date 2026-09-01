@@ -31,7 +31,7 @@ def carregar_placar():
         if len(campos) == 2:
             vezes.append(int(campos[1]))
 
-    # Se o arquivo antigo tinha menos de 4 jogos, completa com zero
+    
     while len(vezes) < len(NOMES):
         vezes.append(0)
 
