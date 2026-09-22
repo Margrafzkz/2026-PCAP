@@ -62,7 +62,7 @@ def jogar():
     return vencedor
 
 
-def principal():
+def jogar_par_ou_impar():
 
     jogador = 0
     maquina = 0
@@ -90,4 +90,4 @@ def principal():
 
 
 # Inicia o programa.
-principal()
+jogar_par_ou_impar()
