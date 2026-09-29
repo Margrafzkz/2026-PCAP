@@ -5,15 +5,13 @@ Margraf
 */
 
 #include <stdio.h>
+
 int main(){
+    int A=0, B=0, prod; 
+    scanf("%d", &A);
+    scanf("%d", &B);
+    int PROD = A * B;
+    printf("PROD = %d\n", PROD);
 
-int A=0, B=0, soma=0; 
-scanf("%d", &A);
-scanf("%d", &B);
-
-soma = A * B;
-
-printf(" PROD = %d\n", soma);
-
- return 0;
+    return 0;
 }
