@@ -4,12 +4,15 @@ Problema 1002 Beecrowd
 Margraf
 */
 #include <stdio.h>
- 
-int main() {
-    double R=0, A=0;
-    scanf("%lf", &R);
-    A = 3.14159*(R*R);
-    printf("A= %4lf\n", A);
 
-     return 0;
+
+int main() {
+    double r, A;
+    double pi = 3.14159;
+    scanf("%lf", &r);
+    A = pi * r * r;
+    printf("A=%.4lf\n", A);
+
+
+    return 0;
 }
