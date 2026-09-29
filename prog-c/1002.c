@@ -6,10 +6,10 @@ Margraf
 #include <stdio.h>
  
 int main() {
- double R=0, A=0;
- scanf("%lf", &R);
- A = 3.14159*(R*R);
- printf("A= %4lf\n", A);
+    double R=0, A=0;
+    scanf("%lf", &R);
+    A = 3.14159*(R*R);
+    printf("A= %4lf\n", A);
 
      return 0;
 }
