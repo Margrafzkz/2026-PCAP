@@ -5,7 +5,7 @@
  * LIAC      : Leia N frases, só com letras minúsculas e espaços. Para cada uma, conte quantas letras diferentes do alfabeto aparecem: 26 é "frase completa"; de 13 a 25, "frase quase completa"; menos de 13, "frase mal elaborada".
  */
 
- #include <iostream>
+#include <iostream>
 #include <string>
 using namespace std;
 
