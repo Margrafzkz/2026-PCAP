@@ -8,11 +8,13 @@ LIAC: Menu com validação, cadastro de jogadores em dois vectors que crescem, u
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
 
 #define DONO "MARGRAF"
+#define ARQUIVO "jogadores.csv"
 
 void linha(){
     cout << "===================================" << endl;
@@ -59,6 +61,27 @@ int buscar(vector<string> &apelidos, string procurando) {
     return -1;
 }
 
+void salvar(vector<string> &apelidos, vector<int> &partidas) {
+    ofstream arquivo(ARQUIVO);
+    int i, qtd = apelidos.size(); 
+    
+    for (i = 0; i < qtd; i++) {
+        arquivo << apelidos [i] << "," << partidas [i] << endl;
+    }
+}
+
+void carregar(vector<string> &apelidos, vector<int> &partidas) {
+    ifstream arquivo(ARQUIVO);
+    string apelido;
+    int n;
+
+    while (getline(arquivo, apelido, ',')) {
+        arquivo >> n; 
+        arquivo.ignore();
+        apelidos.push_back(apelido); 
+        partidas.push_back(n); 
+    }
+}
 void cadastrar(vector<string> &apelidos, vector<int> &partidas) {
     string novo;
 
@@ -131,6 +154,7 @@ int main () {
     int opcao; 
 
     srand(time(NULL));
+    carregar(apelidos, partidas); 
 
     mostrar_menu(); 
     opcao = ler_numero ("Sua Escolha", 0, 3);
@@ -145,7 +169,7 @@ int main () {
         mostrar_menu(); 
         opcao = ler_numero("Sua escolha", 0, 3);
     }
-
+    salvar(apelidos, partidas); 
     titulo ("Ate a proxima!");
     return 0;
 }
