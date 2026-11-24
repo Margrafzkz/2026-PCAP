@@ -1,8 +1,8 @@
 /*
 Disciplina: 2026-PCAP
-Projeto: MeuApp v4.0 -  o Fliperama em C++ (aula 32)
-Autor: Margraf 
-LIAC: Menu com validação, cadastro de jogadores em dois vectors que crescem, um jogo que conta partidas por jogador e o cadastro salvo em arquivo na saida e relido na entrada.
+Projeto: MeuApp v4.0 - o Fliperama em C++ (aula 32)
+Autor: Matheus Margraf 
+LIAC: Menu com validacao, cadastro dinamico e exclusao de jogadores em dois vectors, jogo que conta partidas por jogador e persistencia imediata em arquivo.
 */
 
 #include <iostream>
@@ -16,17 +16,17 @@ using namespace std;
 #define DONO "MARGRAF"
 #define ARQUIVO "jogadores.csv"
 
-void linha(){
+void linha() {
     cout << "===================================" << endl;
 }
 
-void titulo(string texto){
+void titulo(string texto) {
     linha();
     cout << "  " << texto << endl;
     linha();
 }
 
-int ler_numero(string mensagem, int minimo, int maximo){
+int ler_numero(string mensagem, int minimo, int maximo) {
     int numero;
 
     cout << mensagem << ": ";
@@ -66,7 +66,7 @@ void salvar(vector<string> &apelidos, vector<int> &partidas) {
     int i, qtd = apelidos.size(); 
     
     for (i = 0; i < qtd; i++) {
-        arquivo << apelidos [i] << "," << partidas [i] << endl;
+        arquivo << apelidos[i] << "," << partidas[i] << endl;
     }
 }
 
@@ -82,6 +82,7 @@ void carregar(vector<string> &apelidos, vector<int> &partidas) {
         partidas.push_back(n); 
     }
 }
+
 void cadastrar(vector<string> &apelidos, vector<int> &partidas) {
     string novo;
 
@@ -95,7 +96,28 @@ void cadastrar(vector<string> &apelidos, vector<int> &partidas) {
     
     apelidos.push_back(novo);
     partidas.push_back(0);
+    salvar(apelidos, partidas); // Critério 4 (B): salva logo após cadastrar
     cout << "Jogador " << novo << " cadastrado." << endl;
+}
+
+void excluir(vector<string> &apelidos, vector<int> &partidas) {
+    string alvo;
+    int pos;
+
+    titulo("EXCLUIR JOGADOR");
+    alvo = ler_texto("Apelido para excluir");
+    pos = buscar(apelidos, alvo);
+
+    if (pos == -1) {
+        cout << "Jogador nao encontrado." << endl;
+        return;
+    }
+
+    // Critério 2 (B): remove a mesma posição dos dois vectors
+    apelidos.erase(apelidos.begin() + pos);
+    partidas.erase(partidas.begin() + pos);
+    salvar(apelidos, partidas);
+    cout << "Jogador " << alvo << " excluido." << endl;
 }
 
 void listar(vector<string> &apelidos, vector<int> &partidas) {
@@ -124,9 +146,8 @@ void jogar_advinha(vector<string> &apelidos, vector<int> &partidas) {
 
     segredo = rand() % 100 + 1;
     cout << "Pensei em um numero de 1 a 100." << endl;
-    
 
-    palpite = ler_numero ("Seu palpite", 1, 100);
+    palpite = ler_numero("Seu palpite", 1, 100);
     tentativas = 1; 
     while (palpite != segredo) {
         if (palpite < segredo) {
@@ -140,6 +161,7 @@ void jogar_advinha(vector<string> &apelidos, vector<int> &partidas) {
     cout << "Acertou em " << tentativas << " tentativas, " << quem << "!" << endl;
 
     partidas[pos] = partidas[pos] + 1; 
+    salvar(apelidos, partidas); // Critério 3 (B): grava partida assim que o jogo termina
 } 
 
 void mostrar_menu() {
@@ -149,11 +171,12 @@ void mostrar_menu() {
     cout << "[1] Advinhe o Numero" << endl;
     cout << "[2] Cadastrar jogador" << endl;
     cout << "[3] Listar jogadores" << endl;
-    cout << "[0] Sair " << endl;
+    cout << "[4] Excluir jogador" << endl;
+    cout << "[0] Sair" << endl;
     linha();
 }
 
-int main () {
+int main() {
     vector<string> apelidos;
     vector<int> partidas;
     int opcao; 
@@ -162,19 +185,21 @@ int main () {
     carregar(apelidos, partidas); 
 
     mostrar_menu(); 
-    opcao = ler_numero ("Sua Escolha", 0, 3);
+    opcao = ler_numero("Sua escolha", 0, 4);
     while (opcao != 0) {
-        if (opcao == 1 ) {
+        if (opcao == 1) {
             jogar_advinha(apelidos, partidas);
-        } else if (opcao == 2 ) {
+        } else if (opcao == 2) {
             cadastrar(apelidos, partidas);
-        } else {
+        } else if (opcao == 3) {
             listar(apelidos, partidas); 
+        } else {
+            excluir(apelidos, partidas);
         }
         mostrar_menu(); 
-        opcao = ler_numero("Sua escolha", 0, 3);
+        opcao = ler_numero("Sua escolha", 0, 4);
     }
     salvar(apelidos, partidas); 
-    titulo ("Ate a proxima!");
+    titulo("Ate a proxima!");
     return 0;
 }
